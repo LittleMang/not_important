@@ -106,7 +106,6 @@
             for(i = 0;i<c_len;i++){
                 c_child[i].style.backgroundColor = color[i];
                 c_child[i].onclick = function(){
-                    console.log()
                     style_box.style.backgroundColor = this.style.backgroundColor;
                 }
             }
@@ -119,6 +118,7 @@
             function show () {
                 mask.style.display = 'block';
             }
+            //默认样式
             function default_style (){
                 style_box.style.width = 100 + 'px';
                 style_box.style.height = 100 + 'px';
@@ -132,11 +132,13 @@
             var w_len = w_child.length,
                 h_len = h_child.length;
                 
+            //改变宽
             for(i = 0;i<w_len;i++){
                 w_child[i].onclick = function(){
                     style_box.style.width = this.innerHTML + 'px';
                 };
             }
+            //改变高
             for(i = 0;i<h_len;i++){
                 h_child[i].onclick = function(){
                     style_box.style.height = this.innerHTML + 'px';
