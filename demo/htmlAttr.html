@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>html属性操作</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-style: normal;
+        }
+        body{
+            background-color: black;
+            display: flex;
+        }
+        #box{
+            width: 680px;
+            height: 380px;
+            padding: 10px;
+            margin: 50px auto;
+            background-color: #fff;
+            position: relative;
+        }
+        #style_box{
+            width: 100px;
+            height: 100px;
+            border:5px solid #0e0e0e;
+            display: inline-block;
+        }
+        #mask{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,.4);
+            display: none;
+        }
+        #set_box{
+            background-color: #0e0e0e;
+            width: 280px;
+            height: 180px;
+            padding: 10px;
+            background-color: #fff;
+            border:10px solid #eee;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            
+        }
+        #list li{
+            margin-bottom: 10px;
+        }
+        #list i{
+            width: 38px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            border:1px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2>请为下面的div设置样式：<button id="b_set">点击设置</button></h2>
+        <div id="style_box"></div>
+        <div id="mask">
+            <div id="set_box">
+                <ul id="list">
+                    <li id="color_">
+                       请选择背景色：
+                        <i>红</i>
+                        <i>黄</i>
+                        <i>蓝</i>
+                    </li>
+                    <li id="width_">
+                        请选择宽(px)：
+                        <i>200</i>
+                        <i>300</i>
+                        <i>400</i>
+                    </li>
+                    <li id="height_">
+                        请选择高(px)：
+                        <i>200</i>
+                        <i>300</i>
+                        <i>400</i>
+                    </li>
+                </ul>
+                <p style="text-align: center">
+                    <button id="b_reset">RESET</button>
+                    <button id="b_ok">OK</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            var style_color = document.getElementById('color_');
+            var c_child = style_color.children;
+            var c_len = c_child.length;
+            var i = undefined,color = ['red','yellow','blue'];
+            var style_box = document.getElementById('style_box');
+            for(i = 0;i<c_len;i++){
+                c_child[i].style.backgroundColor = color[i];
+                c_child[i].onclick = function(){
+                    console.log()
+                    style_box.style.backgroundColor = this.style.backgroundColor;
+                }
+            }
+            
+            var set_btn = document.getElementById('b_set'),
+                mask = document.getElementById('mask'),
+                reset_btn = document.getElementById('b_reset'),
+                ok_btn = document.getElementById('b_ok');
+            
+            function show () {
+                mask.style.display = 'block';
+            }
+            function default_style (){
+                style_box.style.width = 100 + 'px';
+                style_box.style.height = 100 + 'px';
+                style_box.style.background = '#fff';
+                mask.style.display = 'none';
+            }
+            var style_w = document.getElementById('width_'),
+                style_h = document.getElementById('height_');
+            var w_child = style_w.children,
+                h_child = style_h.children;
+            var w_len = w_child.length,
+                h_len = h_child.length;
+                
+            for(i = 0;i<w_len;i++){
+                w_child[i].onclick = function(){
+                    style_box.style.width = this.innerHTML + 'px';
+                };
+            }
+            for(i = 0;i<h_len;i++){
+                h_child[i].onclick = function(){
+                    style_box.style.height = this.innerHTML + 'px';
+                };
+            }
+            set_btn.onclick = show;
+            reset_btn.onclick = default_style;
+            ok_btn.onclick = function(){
+                mask.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
