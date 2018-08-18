@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>模拟手机发送</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #0e0e0e;
+        }
+        #phone_box{
+            width: 300px;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #phone_screen{
+            width: 240px;
+            height: 480px;
+            border: 2px solid #0e0e0e;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+        }
+        .screen_height{
+            height: 80px;
+        }
+        #phone_cont{
+            flex: 5 1 1000px;
+        }
+        #phone_bottom{
+            flex: 1 1 100px;
+            background-color: #ccc;
+        }
+/*        
+加权值 = flex-shrink * flex-basis + flex-shrink * flex-basis——————>这里有两个
+溢出值 = 加权值 - 父级值(这里主轴方向是cilumn所以取高度)
+压缩后高度 = (flex_basis * flex_shrink / 加权值) * 溢出值
+扩展量 =    flex_basis * flex_shrink / 加权值 * 溢出值
+实际高度 =   flex_basis - 扩展量
+*/
+        #msg_box{
+            display: flex;
+            margin: 10px;
+        }
+        #avatar{
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            flex: 2 1 12%;
+        }
+        #msg_cont{
+            padding: 5px;
+            flex: 8 1 80%;
+            background-color: #ccc;
+            border-radius: 1px;
+        }
+        #msg_cont:before{
+            display: inline-block;
+            content: '';
+            border-width: 4px;
+            border-style: solid;
+            border-color: transparent #ccc transparent transparent;
+            transform: translateX(-13px) translateY(-3px);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="phone_box">
+        <div id="phone_screen">
+            <div id="phone_cont" class="screen_height">
+                <p id="msg_box">
+                    <span id="avatar">☺</span>
+                    <span id="msg_cont">你好我是土豪~哈哈哈哈哈哈</span>
+                </p>
+            </div>
+            <div id="phone_bottom" class="screen_height">
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
